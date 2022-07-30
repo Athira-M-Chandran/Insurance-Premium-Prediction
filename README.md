@@ -91,4 +91,5 @@ pip install ipykernel
 
 **Data Drift: When your datset stats gets change we call it as data drift**
 
-
+> Initialize current timestamp in constant
+> Then start with logger (to track) and Exception( To Handle if unexpected thing happen)
