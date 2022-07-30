@@ -1,0 +1,10 @@
+numpy
+Flask
+gunicorn # for dockerfile
+sklearn
+pandas
+PyYAML
+evidently
+dill # similar to pickle
+matplotlib
+-e .
