@@ -91,5 +91,14 @@ pip install ipykernel
 
 **Data Drift: When your datset stats gets change we call it as data drift**
 
-> Initialize current timestamp in constant
-> Then start with logger (to track) and Exception( To Handle if unexpected thing happen)
+1. Initialize current timestamp in constant
+2. Then start with logger (to track) and Exception( To Handle if unexpected thing happen)
+
+3. Define the structure in config_enity.py
+> Framing the requirements for the configuration
+
+4. Create config.yaml and util.py
+> yaml file is more readable compared to json file. util file is similar to helper function. It is a not a part of pipeline but may required in pipeline files. It is like how to load pickle object, yaml file 
+
+5. constant.py
+> Like initialize the filenames and foldernames
