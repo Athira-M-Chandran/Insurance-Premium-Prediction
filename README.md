@@ -91,6 +91,9 @@ pip install ipykernel
 
 **Data Drift: When your datset stats gets change we call it as data drift**
 
+### Flow
+
+
 1. Initialize current timestamp in constant
 2. Then start with logger (to track) and Exception( To Handle if unexpected thing happen)
 
@@ -102,3 +105,15 @@ pip install ipykernel
 
 5. constant.py
 > Like initialize the filenames and foldernames
+
+6. configuration.py
+> Will create informations to create folders
+
+7. artifact_enitity.py
+> the output file paths
+
+8. data_ingestion.py
+> download data and split it into train and test data
+
+9. pipeline.py
+10. 
