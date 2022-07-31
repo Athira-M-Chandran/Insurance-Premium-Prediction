@@ -89,7 +89,7 @@ docker stop <container_id>
 pip install ipykernel
 ```
 
-**Data Drift: When your datset stats gets change we call it as data drift**
+
 
 ### Flow
 
@@ -116,4 +116,17 @@ pip install ipykernel
 > download data and split it into train and test data
 
 9. pipeline.py
-10. 
+10. demo.py 
+> run demo.py to test
+
+### for data Validation
+
+1. Create schema.yaml
+> column names with datatype
+2. constant.py
+>  data validation related variables
+3. configuration.py<br>
+> **Evidently AI** package is used for datadrift. Run statistical tests to compare the input feature distributions and usually explore the drift.
+**Data Drift: When your datset stats gets change we call it as data drift**
+4. Entity and write code in data_validation component and then in pipeline
+
