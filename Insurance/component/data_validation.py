@@ -124,5 +124,8 @@ class DataValidation:
                 message="Data Validation performed successully."
             )
             logging.info(f"Data validation artifact: {data_validation_artifact}")
+
+            return data_validation_artifact
+
         except Exception as e:
             raise ProjectException(e,sys) from e

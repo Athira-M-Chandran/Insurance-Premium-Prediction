@@ -130,3 +130,9 @@ pip install ipykernel
 **Data Drift: When your datset stats gets change we call it as data drift**
 4. Entity and write code in data_validation component and then in pipeline
 
+### For data transformation
+
+repeat process
+
+> yaml -> constants -> entity -> configuration -> component file -> pipeline
+

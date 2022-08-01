@@ -8,6 +8,8 @@ def main():
         pipeline.run_pipeline()
         #data_validation_config = Configuartion().get_data_transformation_config()
         #print(data_validation_config)
+        #data_traansformation_config = Configuartion().get_data_transformation_config()
+        #print(data_traansformation_config)
        
     except Exception as e:
         logging.error(f"{e}")

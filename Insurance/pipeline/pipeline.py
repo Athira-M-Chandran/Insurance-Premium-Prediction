@@ -2,10 +2,11 @@ from Insurance.config.configuration import Configuartion
 from Insurance.logger import logging
 from Insurance.exception import ProjectException
 
-from Insurance.entity.artifact_entity import DataIngestionArtifact, DataValidationArtifact
+from Insurance.entity.artifact_entity import DataIngestionArtifact, DataValidationArtifact,DataTransformationArtifact
 from Insurance.entity.config_entity import DataIngestionConfig, DataValidationConfig
 from Insurance.component.data_ingestion import DataIngestion
 from Insurance.component.data_validation import DataValidation
+from Insurance.component.data_transformation import DataTransformation
 
 import os,sys
 
@@ -34,8 +35,20 @@ class Pipeline:
             return data_validation.initiate_data_validation()
         except Exception as e:
             raise ProjectException(e,sys) from e
-    def start_data_transformation(self):
-        pass
+    
+    def start_data_transformation(self,
+                                  data_ingestion_artifact: DataIngestionArtifact,
+                                  data_validation_artifact: DataValidationArtifact
+                                  ) -> DataTransformationArtifact:
+        try:
+            data_transformation = DataTransformation(
+                data_transformation_config=self.config.get_data_transformation_config(),
+                data_ingestion_artifact=data_ingestion_artifact,
+                data_validation_artifact=data_validation_artifact
+            )
+            return data_transformation.initiate_data_transformation()
+        except Exception as e:
+            raise ProjectException(e, sys)
 
     def start_model_trainer(self):
         pass
@@ -52,6 +65,10 @@ class Pipeline:
 
             data_ingestion_artifact = self.start_data_ingestion()
             data_validation_artifact = self.start_data_validation(data_ingestion_artifact=data_ingestion_artifact)
+            data_transformation_artifact = self.start_data_transformation(
+                data_ingestion_artifact=data_ingestion_artifact,
+                data_validation_artifact=data_validation_artifact
+            )
             
             
 
