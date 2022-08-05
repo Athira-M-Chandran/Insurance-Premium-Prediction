@@ -6,6 +6,20 @@ import dill
 import pandas as pd
 from Insurance.constant import *
 
+def write_yaml_file(file_path:str,data:dict=None):
+    """
+    Create yaml file 
+    file_path: str
+    data: dict
+    """
+    try:
+        os.makedirs(os.path.dirname(file_path), exist_ok=True)
+        with open(file_path,"w") as yaml_file:
+            if data is not None:
+                yaml.dump(data,yaml_file)
+    except Exception as e:
+        raise ProjectException(e,sys)
+
 def read_yaml_file(file_path:str)->dict:
     """
     Reads a YAML file and returns the contents as a dictionary.
@@ -31,6 +45,17 @@ def save_numpy_array_data(file_path: str, array: np.array):
     except Exception as e:
         raise ProjectException(e, sys) from e
 
+def load_numpy_array_data(file_path: str) -> np.array:
+    """
+    load numpy array data from file
+    file_path: str location of file to load
+    return: np.array data loaded
+    """
+    try:
+        with open(file_path, 'rb') as file_obj:
+            return np.load(file_obj)
+    except Exception as e:
+        raise ProjectException(e, sys) from e
 
 def save_object(file_path:str,obj):
     """
@@ -42,6 +67,16 @@ def save_object(file_path:str,obj):
         os.makedirs(dir_path, exist_ok=True)
         with open(file_path, "wb") as file_obj:
             dill.dump(obj, file_obj)
+    except Exception as e:
+        raise ProjectException(e,sys) from e
+
+def load_object(file_path:str):
+    """
+    file_path: str
+    """
+    try:
+        with open(file_path, "rb") as file_obj:
+            return dill.load(file_obj)
     except Exception as e:
         raise ProjectException(e,sys) from e
 
